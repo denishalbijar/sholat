@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #198754;
+    --secondary-color: #145c32;
+    --accent-color: #dc3545;
+    --bg-light: #f1f3f5;
+    --bg-dark: #212529;
+  }
+  /* Global Styling */
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f1f3f5, #e9ecef);
+    color: #212529;
+    transition: background-color 0.3s ease;
+    padding-bottom: 40px;
+    margin: 0;
+  }
+  .container {
+    width: 100%;
+    max-width: 960px;
+    padding: 15px;
+    margin: 30px auto 40px auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+  }
+  label {
+    font-weight: 500;
+  }
+  /* Clock */
+  #currentTimeDisplay {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  /* Prayer Alert */
+  #prayerAlert {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+    height: 2em;
+  }
+  .marquee-animation {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+    will-change: transform;
+    animation: slideLeft 10s linear forwards;
+  }
+  @keyframes slideLeft {
+    0% { transform: translateX(100%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(-100%); opacity: 0; }
+  }
+  /* Form Section (Hanya Dropdown Kota & Tombol) */
+  .form-section {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  /* Radio Button Selector */
+  .view-selector {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .view-selector label {
+    margin-right: 20px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  .view-selector input[type="radio"] {
+    margin-right: 5px;
+  }
+  /* Tabel Bulanan Responsive dengan Sticky Header */
+  .table-responsive {
+    position: relative;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(100vh - 250px);
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  .table-responsive table {
+    min-width: 900px;
+    border-collapse: collapse;
+  }
+  .table-responsive thead {
+    position: sticky;
+    top: 0;
+    z-index: 101;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  }
+  .table-responsive thead th {
+    color: #212529;
+    text-transform: uppercase;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+  }
+  .table-responsive tbody tr:hover {
+    background-color: rgba(25, 135, 84, 0.1);
+  }
+  .highlight-today td {
+    background-color: #ffc107 !important;
+    font-weight: bold;
+    color: #212529;
+  }
+  /* Daily Schedule Box */
+  .daily-box {
+    background-color: #ffffff;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  .daily-box:hover {
+    transform: scale(1.02);
+  }
+  .daily-box h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  .daily-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+  }
+  .daily-row:last-child {
+    border-bottom: none;
+  }
+  .daily-label {
+    font-weight: 500;
+  }
+  .daily-time {
+    font-size: 1.15rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+  /* Custom Button */
+  .btn-custom {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  /* Responsive Adjustments */
+  @media (max-width: 576px) {
+    #currentTimeDisplay {
+      font-size: 1.5rem;
+    }
+    .daily-time {
+      font-size: 1rem;
+    }
+    .daily-box {
+      padding: 15px;
+    }
+    .table-responsive table {
+      font-size: 0.8rem;
+    }
+  }
+  /* Dark Mode Overrides */
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: linear-gradient(135deg, #343a40, #212529);
+      color: #f8f9fa;
+    }
+    .container {
+      background-color: #343a40;
+      box-shadow: none;
+    }
+    .form-section, .table-responsive, .daily-box {
+      background-color: #495057;
+      border-color: #6c757d;
+    }
+    .table-responsive thead {
+      background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    }
+    .daily-time {
+      color: #0d6efd;
+    }
+    .view-selector label {
+      color: #ced4da;
+    }
+  }

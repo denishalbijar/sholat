@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jadwal Sholat & Imsakiyah</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Select2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Jadwal Sholat & Imsakiyah</h2>
+    <!-- Prayer Alert -->
+    <div id="prayerAlert"></div>
+    <!-- Real-Time Clock -->
+    <div id="currentTimeDisplay"></div>
+    <p id="displaySelection" class="text-center fw-bold mb-3"></p>
+    
+    <!-- Form Section (Hanya Dropdown Kota & Tombol) -->
+    <div class="form-section">
+      <div class="row g-3">
+        <!-- Dropdown Kota -->
+        <div class="col-12 col-md-8">
+          <label for="citySelect">Pilih Kota :</label>
+          <select id="citySelect" class="form-select"></select>
+        </div>
+        <!-- Tombol Tampilkan -->
+        <div class="col-12 col-md-4 d-grid">
+          <button id="tampilkan" class="btn btn-custom mt-4">Tampilkan</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- View Selector dengan Radio Button -->
+    <div class="view-selector">
+      <label>
+        <input type="radio" name="viewOption" value="bulan" /> Bulan
+      </label>
+      <label>
+        <input type="radio" name="viewOption" value="hari" checked /> Hari
+      </label>
+    </div>
+    
+    <!-- Konten View -->
+    <div id="viewBulan">
+      <!-- Tampilan Bulanan akan muncul di sini -->
+    </div>
+    <div id="viewHari">
+      <!-- Tampilan Harian akan muncul di sini -->
+    </div>
+  </div>
+  
+  <!-- jQuery, Bootstrap Bundle JS, Select2 JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
