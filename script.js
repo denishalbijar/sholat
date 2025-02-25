@@ -196,14 +196,23 @@ $(document).ready(async function () {
         });
         if (matchedPrayer) {
             if (now.getMinutes() !== lastAdzanMinute || matchedPrayer !== lastAdzanPrayer) {
-                // Untuk subuh, audio menggunakan "azan.mp3", untuk imsak dan lainnya "adzhan.mp3"
-                let audioSrc = (matchedPrayer === "subuh") ? "azan.mp3" : "adzhan.mp3";
+                // Untuk imsak, audio menggunakan "imsak.mp3"
+                // Untuk subuh, audio menggunakan "azan.mp3"
+                // Untuk lainnya, audio menggunakan "adzhan.mp3"
+                let audioSrc;
+                if (matchedPrayer === "imsak") {
+                    audioSrc = "imsak.mp3";
+                } else if (matchedPrayer === "subuh") {
+                    audioSrc = "azan.mp3";
+                } else {
+                    audioSrc = "adzhan.mp3";
+                }
                 let audio = new Audio(audioSrc);
                 audio.play().catch(error => console.error("Gagal memutar audio:", error));
+                // Marquee akan terus bergerak sampai audio selesai,
+                // kemudian baru kita hapus teks marquee
                 audio.onended = function() {
-                    $("#prayerAlert").fadeOut(500, function(){
-                        $(this).html("").show().data("alert-active", false);
-                    });
+                    $("#prayerAlert").html("").data("alert-active", false);
                 };
                 lastAdzanMinute = now.getMinutes();
                 lastAdzanPrayer = matchedPrayer;
@@ -211,6 +220,7 @@ $(document).ready(async function () {
             if (!$("#prayerAlert").data("alert-active")) {
                 $("#prayerAlert").data("alert-active", true);
                 const displayName = matchedPrayer.charAt(0).toUpperCase() + matchedPrayer.slice(1);
+                // Teks marquee akan terus bergerak (dengan animasi CSS pada kelas "marquee-animation")
                 $("#prayerAlert").html(`<div class="marquee-animation">Waktu ${displayName} telah tiba</div>`);
             }
         } else {
@@ -244,4 +254,4 @@ $(document).ready(async function () {
         }
     }
     setInterval(detectLocation, 60000);
-  });
+});
